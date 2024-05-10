@@ -19,7 +19,11 @@ export const PhoneBook = () => {
   }, [contacts]);
 
   const handleSubmit = user => {
-    if (contacts.some(x => x.name === user.name)) {
+    if (
+      contacts.some(
+        exUser => exUser.name.toLowerCase() === user.name.toLowerCase()
+      )
+    ) {
       alert(`${user.name} is already in contacts.`);
       return false;
     }
@@ -34,7 +38,7 @@ export const PhoneBook = () => {
   };
 
   const handleDelete = id => {
-    setContacts(contacts.filter(x => x.id !== id));
+    setContacts(contacts.filter(user => user.id !== id));
   };
 
   function getFilteredData() {
